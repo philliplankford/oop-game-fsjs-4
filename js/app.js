@@ -25,4 +25,16 @@ keyboard.addEventListener("click", (e) => {
     }
 })
 
-// keyboard.addEventListener("keyUp")
+document.addEventListener("keydown", (e) => {
+    const keys = document.querySelectorAll(".key");
+    const key = e.key;
+    let element = "";
+    if(/^[a-z]+$/ig.test(key)){
+        for (let i = 0; i < keys.length; i++){
+            if (keys[i].textContent === key) {
+            element = keys[i];
+            }
+        }
+        game.handleInteraction(element);
+    }
+})
