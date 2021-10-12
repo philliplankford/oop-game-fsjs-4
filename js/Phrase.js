@@ -28,7 +28,7 @@ class Phrase {
     }
     
     showMatchedLetter(letter) {
-        const matches = document.getElementsByClassName(`${letter}`);
+        const matches = document.getElementsByClassName(`${letter}`); // gets all revealed class names by their letter
         for (let i = 0; i < matches.length; i++) {
             matches[i].classList.remove("hide");
             matches[i].classList.add("show");

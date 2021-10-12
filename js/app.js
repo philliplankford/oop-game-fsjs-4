@@ -22,7 +22,7 @@ document.addEventListener("keydown", (e) => {
         const keys = document.querySelectorAll(".key");
         const key = e.key;
         let element = "";
-        if(/^[a-z]+$/ig.test(key)){
+        if(/^[a-z]+$/ig.test(key)){ // regex checks if its a alphabetic character to avoid other keys
             for (let i = 0; i < keys.length; i++){
                 if (keys[i].textContent === key) {
                 element = keys[i];
