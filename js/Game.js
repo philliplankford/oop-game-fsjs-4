@@ -37,8 +37,10 @@ class Game {
                 this.gameOver(true);
             }
         } else {
-            key.classList.add("wrong");
-            this.removeLife();
+            if (!key.classList.contains("wrong")){
+                key.classList.add("wrong");
+                this.removeLife();
+            } 
         }
     }
 
@@ -74,10 +76,12 @@ class Game {
         if (bool) {
             heading.innerText = "You Won!"
             overlay.classList.remove("start");
+            overlay.classList.remove("lose");
             overlay.classList.add("win");
         } else {
             heading.innerText = "You Lost! Try Again!"
             overlay.classList.remove("start");
+            overlay.classList.remove("win");
             overlay.classList.add("lose");
         }
         this.resetGame();
