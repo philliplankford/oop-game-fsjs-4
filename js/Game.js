@@ -20,11 +20,6 @@ class Game {
         overlay.style.display = "none";
         this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
-        // const randomPhrase = this.getRandomPhrase(); 
-        // const phrase = new Phrase(randomPhrase);
-        // this.activePhrase = phrase; // create a new phrase object and store it within the game object
-        // // phrase class methods can be called on game.activePhrase
-        // phrase.addPhraseToDisplay();
     }
 
     getRandomPhrase() {
