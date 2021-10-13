@@ -6,11 +6,11 @@ class Game {
     constructor() {
         this.missed = 0; 
         this.phrases = [
-            "piece of cake",
-            "zed is dead",
-            "a dime a dozen",
-            "donuts are good",
-            "it is what it is",
+            new Phrase("piece of cake"),
+            new Phrase("zed is dead"),
+            new Phrase("a dime a dozen"),
+            new Phrase("donuts are good"),
+            new Phrase("it is what it is"),
         ];
         this.activePhrase = null;
     }
@@ -18,11 +18,13 @@ class Game {
     startGame() {
         const overlay = document.querySelector("#overlay");
         overlay.style.display = "none";
-        const randomPhrase = this.getRandomPhrase(); 
-        const phrase = new Phrase(randomPhrase);
-        this.activePhrase = phrase; // create a new phrase object and store it within the game object
-        // phrase class methods can be called on game.activePhrase
-        phrase.addPhraseToDisplay();
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
+        // const randomPhrase = this.getRandomPhrase(); 
+        // const phrase = new Phrase(randomPhrase);
+        // this.activePhrase = phrase; // create a new phrase object and store it within the game object
+        // // phrase class methods can be called on game.activePhrase
+        // phrase.addPhraseToDisplay();
     }
 
     getRandomPhrase() {
@@ -31,6 +33,7 @@ class Game {
     }
 
     handleInteraction(key) {
+        key.disabled = true;
         if (this.activePhrase.checkLetter(key.textContent)) {
             this.activePhrase.showMatchedLetter(key.textContent);
             key.classList.add("chosen");
@@ -43,7 +46,6 @@ class Game {
                 this.removeLife();
             } 
         }
-        key.disabled = true;
     }
 
     removeLife() {
@@ -93,11 +95,11 @@ class Game {
         const phrase = document.querySelector("#phrase ul");
         const allKeys = document.querySelectorAll(".key");
         const hearts = document.querySelectorAll(".tries img");
-        
+
         // reanable all keys
         for (let i = 0; i < allKeys.length; i++){
-            allKeys[i].className = "key";
             allKeys[i].disabled = false;
+            allKeys[i].className = "key";
         }
 
         // clear last phrase
